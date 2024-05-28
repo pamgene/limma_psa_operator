@@ -1,0 +1,21 @@
+{
+  "name": "Outlier Detection",
+  "description": "Operator for flagging outliers with iqr method",
+  "authors": [
+    "pamgene"
+  ],
+  "tags": [
+    "QC"
+  ],
+  "urls": [
+    "https://github.com/pamgene/detect_outliers_operator"
+  ],
+    "properties": [
+    {
+      "kind": "DoubleProperty",
+      "name": "Threshold",
+      "defaultValue": 1.5,
+      "description": "threshold for flagging outliers"
+    }
+  ]
+}
