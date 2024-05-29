@@ -64,7 +64,11 @@ limmaFun = function(df){
 result = ctx %>% 
   getData() %>% 
   limmaFun() %>% 
-  select(.ri, contrast, logFC, AveExpr, t, P.Value) %>% 
+  select(.ri, contrast, logFC, AveExpr, t, p.value = P.Value) %>% 
+  mutate(logp= -log10(p.value)) %>% 
+  group_by(contrast) %>% 
+  mutate(p.rank = rank(p.value)) %>% 
+  ungroup() %>% 
   mutate(.ri = as.integer(.ri))
 
 result %>%   

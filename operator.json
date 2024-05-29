@@ -1,11 +1,11 @@
 {
-  "name": "Outlier Detection",
+  "name": "LIMMA PSA",
   "description": "Operator for performing phosphosite analysis with LIMMA",
   "authors": [
     "pamgene"
   ],
   "tags": [
-    "QC"
+    "Data Analysis"
   ],
   "urls": [
     "https://github.com/pamgene/limma_psa_operator"
