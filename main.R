@@ -2,6 +2,7 @@ library(tercen)
 library(dplyr)
 library(limma)
 library(reshape2)
+
 ctx <- tercenCtx()
 
 getData = function(ctx){
@@ -55,7 +56,7 @@ limmaFun = function(df){
     do({
       tt = topTable(fresult, coef = .$contrast, number = dim(X)[1])
       tt %>% 
-        mutate(.ci = rownames(tt))
+        mutate(.ri = rownames(tt))
     }) %>% 
     ungroup()
 }
@@ -63,8 +64,8 @@ limmaFun = function(df){
 result = ctx %>% 
   getData() %>% 
   limmaFun() %>% 
-  select(.ci, contrast, logFC, AveExpr, t, P.Value) %>% 
-  mutate(.ci = as.integer(.ci))
+  select(.ri, contrast, logFC, AveExpr, t, P.Value) %>% 
+  mutate(.ri = as.integer(.ri))
 
 result %>%   
   ctx$addNamespace() %>% 

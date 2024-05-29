@@ -1,6 +1,6 @@
 {
   "name": "Outlier Detection",
-  "description": "Operator for flagging outliers with iqr method",
+  "description": "Operator for performing phosphosite analysis with LIMMA",
   "authors": [
     "pamgene"
   ],
@@ -8,14 +8,7 @@
     "QC"
   ],
   "urls": [
-    "https://github.com/pamgene/detect_outliers_operator"
-  ],
-    "properties": [
-    {
-      "kind": "DoubleProperty",
-      "name": "Threshold",
-      "defaultValue": 1.5,
-      "description": "threshold for flagging outliers"
-    }
+    "https://github.com/pamgene/limma_psa_operator"
   ]
+ 
 }
