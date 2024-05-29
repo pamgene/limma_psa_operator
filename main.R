@@ -29,6 +29,11 @@ trtContrasts = function(grp){
     mutate(contrast = paste(Var1, Var2, sep="-")) 
 }
 
+supergroups = function(ctx){
+  ctx$cselect() %>% 
+    dplyr::mutate(.ci = 0:(n()-1))
+}
+
 limmaFun = function(df){
   X = df %>% 
     acast(.ri ~obs, value.var = ".y")
@@ -63,7 +68,8 @@ limmaFun = function(df){
 
 result = ctx %>% 
   getData() %>% 
-  limmaFun() %>% 
+  group_by(.ci) %>% 
+  do(limmaFun(.))%>% 
   select(.ri, contrast, logFC, AveExpr, t, p.value = P.Value) %>% 
   mutate(logp= -log10(p.value)) %>% 
   group_by(contrast) %>% 
@@ -71,6 +77,13 @@ result = ctx %>%
   ungroup() %>% 
   mutate(.ri = as.integer(.ri))
 
-result %>%   
+if(max(result$.ci) >0) {
+  result = result %>%  
+    left_join(supergroups(ctx), by = ".ci")
+}
+
+result %>%
+  select(-.ci) %>% 
+  ungroup() %>% 
   ctx$addNamespace() %>% 
   ctx$save()
