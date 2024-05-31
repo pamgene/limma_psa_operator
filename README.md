@@ -13,7 +13,7 @@ https://bioconductor.org/packages/release/bioc/html/limma.html
 Input projection|.
 ---|---
 `y-axis` | values to perform analysis on
-`x-axis` | x-axis to indicate the grouping. all n(n-1)/2 group-group contrast will be analyzed, with `n` the number of groups.
+`x-axis` | x-axis to indicate the grouping. all n(n-1)/2 group-group comparissons, aka `contrasts`,  will be analyzed, with `n` the number of groups.
 `rows` | spot ID
 `labels`| labels to indicate observations in the analysis.
 `color`| optional single color to indicate a pairing or blocking factor. This factor will be implemented as a random factor in the LIMMA analysis.
