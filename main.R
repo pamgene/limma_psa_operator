@@ -109,8 +109,6 @@ doLimmaWithPairing = function(df){
   
   fit = lmFit(X, mm, block = pf, correlation = dc$consensus.correlation) 
   
-  browser()
-  
   fresult = fit %>% 
     contrasts.fit(contr.mat) %>% 
     eBayes()
@@ -142,8 +140,13 @@ if(max(result$.ci) >0) {
     left_join(supergroups(ctx), by = ".ci")
 }
 
-result %>%
-  select(-.ci) %>% 
- # ungroup() %>% 
+out = result %>%
   ctx$addNamespace() %>% 
-  ctx$save()
+  as_relation() %>% 
+  left_join_relation(ctx$rrelation, ".ri", ctx$rrelation$rids) %>% 
+  left_join_relation(ctx$crelation, ".ci", ctx$crelation$rids)
+  
+out %>% 
+  as_join_operator(ctx$cnames, ctx$cnames) %>% 
+  save_relation(ctx)
+
