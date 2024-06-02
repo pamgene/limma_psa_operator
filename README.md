@@ -41,9 +41,9 @@ LIMMA is used to apply linear modeling to PamChip experiments over all included 
 
 Subsequently, all pairwise comparissons (contrasts) are analyzed.
 
-LIMMA's empirical Bayes method is applied to moderate the statistic based on information of all analyzed peptides.
+LIMMA's empirical Bayes method is applied to moderate the t-statistic based on information of all analyzed peptides.
 
-Hence the statistical power of analyzing per peptide pairwise comparisons is increased by using information of all conditions and peptides included in the analysis.
+Hence, the statistical power of analyzing per peptide pairwise comparisons is increased by using information of all conditions and peptides included in the analysis.
 
 
 
