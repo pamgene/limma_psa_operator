@@ -50,10 +50,6 @@
       "Package": "BiocVersion",
       "Version": "3.12.0",
       "Source": "Bioconductor",
-      "git_url": "https://git.bioconductor.org/packages/BiocVersion",
-      "git_branch": "master",
-      "git_last_commit": "23b9719",
-      "git_last_commit_date": "2020-04-27",
       "Requirements": [
         "R"
       ],
@@ -61,24 +57,24 @@
     },
     "R6": {
       "Package": "R6",
-      "Version": "2.5.0",
+      "Version": "2.5.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
-      "Hash": "b203113193e70978a696b2809525649d"
+      "Hash": "470851b6d5d0ac559e9d01bb352b4021"
     },
     "Rcpp": {
       "Package": "Rcpp",
-      "Version": "1.0.6",
+      "Version": "1.0.13",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "methods",
         "utils"
       ],
-      "Hash": "dbb5e436998a7eba5a9d682060533338"
+      "Hash": "f27411eb6d9c3dada5edd444b8416675"
     },
     "askpass": {
       "Package": "askpass",
@@ -101,70 +97,50 @@
       ],
       "Hash": "1216ac65ac55ec0058a6f75d7ca0fd52"
     },
-    "crayon": {
-      "Package": "crayon",
-      "Version": "1.4.1",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "grDevices",
-        "methods",
-        "utils"
-      ],
-      "Hash": "e75525c55c70e5f4f78c9960a4b402e9"
-    },
     "curl": {
       "Package": "curl",
-      "Version": "4.3",
+      "Version": "5.2.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
-      "Hash": "2b7d10581cc730804e9ed178c8374bd6"
+      "Hash": "411ca2c03b1ce5f548345d2fc2685f7a"
     },
     "dplyr": {
       "Package": "dplyr",
-      "Version": "1.0.5",
+      "Version": "1.1.4",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
-        "ellipsis",
+        "cli",
         "generics",
         "glue",
         "lifecycle",
         "magrittr",
         "methods",
+        "pillar",
         "rlang",
         "tibble",
         "tidyselect",
         "utils",
         "vctrs"
       ],
-      "Hash": "d0d76c11ec807eb3f000eba4e3eb0f68"
-    },
-    "ellipsis": {
-      "Package": "ellipsis",
-      "Version": "0.3.1",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "rlang"
-      ],
-      "Hash": "fd2844b3a43ae2d27e70ece2df1b4e2a"
+      "Hash": "fedd9d00c2944ff00a0e2696ccf048ec"
     },
     "fansi": {
       "Package": "fansi",
-      "Version": "0.4.2",
+      "Version": "1.0.6",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
-        "R"
+        "R",
+        "grDevices",
+        "utils"
       ],
-      "Hash": "fea074fb67fe4c25d47ad09087da847d"
+      "Hash": "962174cf2aeb5b9eea581522286a911f"
     },
     "generics": {
       "Package": "generics",
@@ -179,20 +155,20 @@
     },
     "glue": {
       "Package": "glue",
-      "Version": "1.4.2",
+      "Version": "1.7.0",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "methods"
       ],
-      "Hash": "6efd734b14c6471cfe443345f3e35e29"
+      "Hash": "e0b3a53876554bd45879e596cdb10a52"
     },
     "httr": {
       "Package": "httr",
-      "Version": "1.4.2",
+      "Version": "1.4.7",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
@@ -201,38 +177,35 @@
         "mime",
         "openssl"
       ],
-      "Hash": "a525aba14184fec243f9eaec62fbed43"
+      "Hash": "ac107251d9d9fd72f0ca8049988f1d7f"
     },
     "jsonlite": {
       "Package": "jsonlite",
-      "Version": "1.7.2",
+      "Version": "1.8.8",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "methods"
       ],
-      "Hash": "98138e0994d41508c7a6b84a0600cfcb"
+      "Hash": "e1b9c55281c5adc4dd113652d9e26768"
     },
     "lifecycle": {
       "Package": "lifecycle",
-      "Version": "1.0.0",
+      "Version": "1.0.4",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
+        "cli",
         "glue",
         "rlang"
       ],
-      "Hash": "3471fb65971f1a7b2d4ae7848cf2db8d"
+      "Hash": "b8552d117e1b808b09a832f589b79035"
     },
     "limma": {
       "Package": "limma",
       "Version": "3.46.0",
       "Source": "Bioconductor",
-      "git_url": "https://git.bioconductor.org/packages/limma",
-      "git_branch": "RELEASE_3_12",
-      "git_last_commit": "ff03542",
-      "git_last_commit_date": "2020-10-27",
       "Requirements": [
         "R",
         "grDevices",
@@ -245,10 +218,13 @@
     },
     "magrittr": {
       "Package": "magrittr",
-      "Version": "2.0.1",
+      "Version": "2.0.3",
       "Source": "Repository",
-      "Repository": "RSPM",
-      "Hash": "41287f1ac7d28a92f0a286ed507928d3"
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "7ce2733a9826b3aeb1775d56fd305472"
     },
     "mime": {
       "Package": "mime",
@@ -279,21 +255,20 @@
     },
     "pillar": {
       "Package": "pillar",
-      "Version": "1.5.1",
+      "Version": "1.9.0",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "cli",
-        "crayon",
-        "ellipsis",
         "fansi",
+        "glue",
         "lifecycle",
         "rlang",
         "utf8",
         "utils",
         "vctrs"
       ],
-      "Hash": "24622aa4a0d3de3463c34513edca99b2"
+      "Hash": "15da5a8412f317beeee6175fbc76f4bb"
     },
     "pkgconfig": {
       "Package": "pkgconfig",
@@ -316,27 +291,15 @@
       ],
       "Hash": "6b8177fd19982f0020743fadbfdbd933"
     },
-    "purrr": {
-      "Package": "purrr",
-      "Version": "0.3.4",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "magrittr",
-        "rlang"
-      ],
-      "Hash": "97def703420c8ab10d8f0e6c72101e02"
-    },
     "renv": {
       "Package": "renv",
-      "Version": "0.17.3",
+      "Version": "1.0.7",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "utils"
       ],
-      "Hash": "4543b8cd233ae25c6aba8548be9e747e"
+      "Hash": "397b7b2a265bc5a7a06852524dabae20"
     },
     "reshape2": {
       "Package": "reshape2",
@@ -353,21 +316,21 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "0.4.10",
+      "Version": "1.1.4",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "utils"
       ],
-      "Hash": "599df23c40a4fce9c7b4764f28c37857"
+      "Hash": "3eec01f8b1dee337674b2e34ab1f9bc1"
     },
     "rstudioapi": {
       "Package": "rstudioapi",
-      "Version": "0.13",
+      "Version": "0.16.0",
       "Source": "Repository",
-      "Repository": "RSPM",
-      "Hash": "06c85365a03fdaf699966cc1d3cf53ea"
+      "Repository": "CRAN",
+      "Hash": "96710351d642b70e8f02ddeb237c46a7"
     },
     "statmod": {
       "Package": "statmod",
@@ -383,29 +346,33 @@
     },
     "stringi": {
       "Package": "stringi",
-      "Version": "1.5.3",
+      "Version": "1.8.4",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "stats",
         "tools",
         "utils"
       ],
-      "Hash": "a063ebea753c92910a4cca7b18bc1f05"
+      "Hash": "39e1144fd75428983dc3f63aa53dfa91"
     },
     "stringr": {
       "Package": "stringr",
-      "Version": "1.4.0",
+      "Version": "1.5.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
+        "cli",
         "glue",
+        "lifecycle",
         "magrittr",
-        "stringi"
+        "rlang",
+        "stringi",
+        "vctrs"
       ],
-      "Hash": "0759e6b6c0957edb1311028a49a35e76"
+      "Hash": "960e2ae9e09656611e0b8214ad543207"
     },
     "sys": {
       "Package": "sys",
@@ -455,12 +422,11 @@
     },
     "tibble": {
       "Package": "tibble",
-      "Version": "3.1.0",
+      "Version": "3.2.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
-        "ellipsis",
         "fansi",
         "lifecycle",
         "magrittr",
@@ -471,32 +437,33 @@
         "utils",
         "vctrs"
       ],
-      "Hash": "4d894a114dbd4ecafeda5074e7c538e6"
+      "Hash": "a84e2cc86d07289b3b6f5069df7a004c"
     },
     "tidyselect": {
       "Package": "tidyselect",
-      "Version": "1.1.0",
+      "Version": "1.2.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
-        "ellipsis",
+        "cli",
         "glue",
-        "purrr",
+        "lifecycle",
         "rlang",
-        "vctrs"
+        "vctrs",
+        "withr"
       ],
-      "Hash": "6ea435c354e8448819627cf686f66e0a"
+      "Hash": "829f27b9c4919c16b593794a6344d6c0"
     },
     "utf8": {
       "Package": "utf8",
-      "Version": "1.2.1",
+      "Version": "1.2.4",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
-      "Hash": "c3ad47dc6da0751f18ed53c4613e3ac7"
+      "Hash": "62b65c52671e6665f803ff02954446e9"
     },
     "uuid": {
       "Package": "uuid",
@@ -510,16 +477,29 @@
     },
     "vctrs": {
       "Package": "vctrs",
-      "Version": "0.3.7",
+      "Version": "0.6.5",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
-        "ellipsis",
+        "cli",
         "glue",
+        "lifecycle",
         "rlang"
       ],
-      "Hash": "5540dc30a203a43a1ce5dc6a89532b3b"
+      "Hash": "c03fa420630029418f7e6da3667aac4a"
+    },
+    "withr": {
+      "Package": "withr",
+      "Version": "3.0.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "grDevices",
+        "graphics"
+      ],
+      "Hash": "07909200e8bbe90426fbfeb73e1e27aa"
     },
     "yaml": {
       "Package": "yaml",

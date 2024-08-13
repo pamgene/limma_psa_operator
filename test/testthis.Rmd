@@ -1,0 +1,99 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+options("tercen.workflowId" = "d81a58f796a0528726a004cfc30294b8")
+options("tercen.stepId"     = "3aa0a5dd-531c-46d4-9f9b-f6fdc7c94a63")
+
+getOption("tercen.workflowId")
+getOption("tercen.stepId")
+
+source("../main.R")
+df = readRDS("testdf.RDS")
+```
+# one peptide, compare to t-test
+```{r}
+library(ggplot2)
+library(nlme)
+df_in = df %>% 
+  select(-.pf) %>% 
+  filter(.ri == 0) %>% 
+  filter(grp == "Control" | grp == "T1")
+
+result = df_in %>% 
+  group_by(.ci) %>% 
+  do(limmaFun(.))
+
+result %>% 
+  print()
+
+df_in %>% 
+  filter(.ci == 0) %>% 
+  t.test(.y ~grp, data = .)
+
+df_in %>% 
+  filter(.ci == 1) %>% 
+  t.test(.y ~grp, data = .)
+
+
+```
+# 1 peptide with pairing factor, compare to mm
+NOTE : LIMMA cannot cater for paired t-test case (1 rep per block per group).
+
+```{r}
+df_in = data.frame(.y = rnorm(8), grp = as.factor(c(1,2,1,2,1,2,1,2)), .pf = as.factor(c(1,1,1,1,2,2,2,2)), .ri =0, obs = 1:8)
+
+
+df_in = df_in %>% 
+  mutate(.y = case_when(grp == "2" ~ .y + 1.5,
+                        TRUE ~.y)) %>% 
+  mutate(.y = case_when(.pf == "2" ~.y+1,
+                        TRUE ~.y))
+
+
+      
+
+
+df_in %>% 
+  ggplot(aes(x = .pf, y = .y, colour = grp)) +
+  geom_point() 
+
+mmres = df_in %>% 
+  lme(fixed = .y ~grp, random = ~1|.pf, data = .)
+
+anova(mmres)
+
+presult = df_in %>% 
+  #select(-.pf) %>% 
+  do(limmaFun(.))
+
+print(presult)
+
+
+df_in2 = data.frame(.y = rnorm(12), 
+                    grp = as.factor(c(1,2,3,4,1,2,3,4,1,2,3,4)), 
+                    .pf = as.factor(c(1,1,1,1,2,2,2,2,3,3,3,3)),
+                    .ri = 0,
+                    obs = 1:12)
+
+df_in2 = df_in2 %>% 
+  mutate(.y = case_when(grp == "2" ~.y + 3,
+                        TRUE~.y)) %>% 
+  mutate(.y = case_when(.pf == "2" ~.y + 2,
+                        TRUE ~.y))
+         
+
+df_in2 %>% 
+  ggplot(aes(x = grp, y = .y, colour = .pf)) + 
+  geom_point()
+
+presult2 = df_in2 %>% 
+  select(-.pf) %>% 
+  do(limmaFun(.))
+```
