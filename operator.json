@@ -10,5 +10,14 @@
   "urls": [
     "https://github.com/pamgene/limma_psa_operator"
   ]
+     "properties": [
+        {
+            "kind": "BooleanProperty",
+            "name": "ReverseContrast", 
+            "defaultValue": false,
+            "description": "Reverse the direction in which the contrasts are evaluated"
+        }
+ 
+    ]
  
 }

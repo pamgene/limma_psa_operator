@@ -25,10 +25,17 @@ getData = function(ctx){
   return(df)
 }
 
+CONTR_REVERSE <- ctx$op.value('ReverseContrast', as.logical, TRUE)
+
 trtContrasts = function(grp){
   lvgrp = levels(grp)
-  CM = matrix(nrow = length(lvgrp), ncol = length(lvgrp)) %>% 
-    upper.tri()
+  CM = matrix(nrow = length(lvgrp), ncol = length(lvgrp))
+  
+  if(CONTR_REVERSE){
+    CM = lower.tri(CM)
+  } else {
+    CM = upper.tri(CM)
+  }
   dimnames(CM) = list(lvgrp, lvgrp)
   tc = CM %>% 
     reshape2::melt() %>% 
@@ -123,15 +130,16 @@ doLimmaWithPairing = function(df){
     ungroup()
 }
 
+
 result = ctx %>% 
   getData() %>% 
   group_by(.ci) %>% 
   do(limmaFun(.))%>% 
   ungroup() %>% 
-  select(.ci, .ri, contrast, logFC, AveExpr, t, p.value = P.Value) %>% 
-  mutate(logp= -log10(p.value)) %>% 
+  select(.ci, .ri, contrast, logFC, AveExpr, t, pvalue = P.Value) %>% 
+  mutate(logp= -log10(pvalue)) %>% 
   group_by(contrast) %>% 
-  mutate(p.rank = rank(p.value)) %>% 
+  mutate(rankp = rank(pvalue)) %>% 
   ungroup() %>% 
   mutate(.ri = as.integer(.ri))
 
@@ -145,14 +153,4 @@ result %>%
   ungroup() %>% 
   ctx$addNamespace() %>% 
   ctx$save()
-
-# out = result %>%
-#   ctx$addNamespace() %>% 
-#   as_relation() %>% 
-#   left_join_relation(ctx$rrelation, ".ri", ctx$rrelation$rids) %>% 
-#   left_join_relation(ctx$crelation, ".ci", ctx$crelation$rids)
-#   
-# out %>% 
-#   as_join_operator(ctx$cnames, ctx$cnames) %>% 
-#   save_relation(ctx)
 
