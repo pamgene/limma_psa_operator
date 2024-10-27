@@ -30,10 +30,10 @@ Output relations|.
 `logFC`|Numeric, the log fold change for the contrast analyzed, per peptide
 `AveExpr`| Numeric, the average expression per peptide
 `t`|Numeric, (moderated)  t-value for the contrast analyzed, per peptide
-`p.value`|Numeric, p value for the contrast analyzed, per peptide. The p values are not corrected for multiple comparisons between conditions or peptides, It is left to the user to handle this.
+`pvalue`|Numeric, p value for the contrast analyzed, per peptide. The p values are not corrected for multiple comparisons between conditions or peptides, It is left to the user to handle this.
 `logp`| Numeric, -log10(p.value)
-p.rank| Ranks p-values from low to high, per contrast
-...|optional factors indicating supergrouping
+`rankp`| Ranks p-values from low to high, per contrast
+...|factors indicating supergrouping, if applicable
 
 ##### Details
 
