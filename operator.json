@@ -9,8 +9,8 @@
   ],
   "urls": [
     "https://github.com/pamgene/limma_psa_operator"
-  ]
-     "properties": [
+  ],
+  "properties": [
         {
             "kind": "BooleanProperty",
             "name": "ReverseContrast", 
@@ -19,5 +19,4 @@
         }
  
     ]
- 
-}
+ }
