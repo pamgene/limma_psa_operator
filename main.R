@@ -41,7 +41,7 @@ trtContrasts = function(grp){
     reshape2::melt() %>% 
     filter(value) %>% 
     select(-value) %>% 
-    mutate(contrast = paste(Var1, Var2, sep=" vs ")) 
+    mutate(contrast = paste(Var1, Var2, sep="-")) 
 }
 
 supergroups = function(ctx){
@@ -141,7 +141,8 @@ result = ctx %>%
   group_by(contrast) %>% 
   mutate(rankp = rank(pvalue)) %>% 
   ungroup() %>% 
-  mutate(.ri = as.integer(.ri))
+  mutate(.ri = as.integer(.ri)) %>%
+  mutate(contrast = sub("-", " vs ", .$contrast))
 
 if(max(result$.ci) >0) {
   result = result %>%  
