@@ -12,22 +12,22 @@ https://bioconductor.org/packages/release/bioc/html/limma.html
 
 Input projection|.
 ---|---
-`y-axis` | values to perform analysis on. (VSN) normalized or log-transformed data are expected.
+`y-axis` | Values to perform analysis on. (VSN) normalized or log-transformed data are expected.
 `x-axis` | x-axis to indicate the grouping. all n(n-1)/2 group-group comparisons, aka `contrasts`,  are analyzed (`n` is the number of groups).
-`rows` | peptide (spot) ID
-`labels`| labels to indicate observations in the analysis (e.g. Barcode, Row)
-`color`| optional single color to indicate a pairing or blocking factor. This factor is implemented as a random factor in the LIMMA analysis. Only 1 factor (e.g. Barcode) is permitted.
+`rows` | Peptide (spot) ID
+`labels`| Labels to indicate observations in the analysis (e.g. Barcode, Row)
+`color`| Optional single color to indicate a pairing or blocking factor. This factor is implemented as a random factor in the LIMMA analysis. 
 `columns`| Optional supergrouping. The analysis is performed for each column of the cross tab view separately.
 
 
 Input parameters|.
 ---|---
-`ReverseContrast`| The direction of the contrast or comparison (Test vs Control or Control vs Test). True by default meaning "Test vs Control" type comparison: the condition starting with lower letter in the alphabet is used as the control condition.
+`ReverseContrast`| The direction of the contrast (Test vs Control or Control vs Test). True by default, meaning "Test vs Control" type comparison: the condition starting with lower letter in the alphabet is used as the control condition.
 
 
 Output relations|.
 ---|---
-`contrast`|Character,The two-group comparison analyzed (e.g. Test vs Control)
+`contrast`|Character, The two-group comparison analyzed (e.g. Test vs Control)
 `logFC`|Numeric, the log fold change for the contrast analyzed, per peptide
 `AveExpr`| Numeric, the average expression per peptide
 `t`|Numeric, (moderated)  t-value for the contrast analyzed, per peptide
