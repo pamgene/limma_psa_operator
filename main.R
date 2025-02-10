@@ -7,9 +7,9 @@ library(reshape2)
 ctx <- tercenCtx()
 
 getData = function(ctx){
-  if(length(ctx$labels) < 1) stop("Define samples for each UKA using labels in Tercen")
+  if(length(ctx$labels) < 1) stop("Define samples using labels (e.g. Barcode, Row)")
   
-  if(!ctx$hasXAxis) stop("Define grouping using the x-axis in Tercen")
+  if(!ctx$hasXAxis) stop("Define grouping using the x-axis")
   
   if(length(ctx$colors)>1) stop("More than one pairing factor is not allowed")
   
@@ -41,7 +41,7 @@ trtContrasts = function(grp){
     reshape2::melt() %>% 
     filter(value) %>% 
     select(-value) %>% 
-    mutate(contrast = paste(Var1, Var2, sep="-")) 
+    mutate(contrast = paste(Var1, Var2, sep=" vs ")) 
 }
 
 supergroups = function(ctx){
@@ -82,7 +82,7 @@ doLimmaStraight = function(df){
   result = contr.df %>% 
     group_by(contrast) %>% 
     do({
-      tt = topTable(fresult, coef = .$contrast, number = dim(X)[1])
+      tt = topTable(fresult, coef = .$contrast, number = dim(X)[1], adjust.method = "BH")
       tt %>% 
         mutate(.ri = rownames(tt))
     }) %>% 
@@ -123,7 +123,7 @@ doLimmaWithPairing = function(df){
   result = contr.df %>% 
     group_by(contrast) %>% 
     do({
-      tt = topTable(fresult, coef = .$contrast, number = dim(X)[1])
+      tt = topTable(fresult, coef = .$contrast, number = dim(X)[1], adjust.method = "BH")
       tt %>% 
         mutate(.ri = rownames(tt))
     }) %>% 
@@ -136,7 +136,7 @@ result = ctx %>%
   group_by(.ci) %>% 
   do(limmaFun(.))%>% 
   ungroup() %>% 
-  select(.ci, .ri, contrast, logFC, AveExpr, t, pvalue = P.Value) %>% 
+  select(.ci, .ri, contrast, logFC, AveExpr, t, pvalue = P.Value, FDR = adj.P.Val) %>% 
   mutate(logp= -log10(pvalue)) %>% 
   group_by(contrast) %>% 
   mutate(rankp = rank(pvalue)) %>% 
