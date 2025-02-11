@@ -14,8 +14,8 @@
         {
             "kind": "BooleanProperty",
             "name": "ReverseContrast", 
-            "defaultValue": false,
-            "description": "Reverse the direction in which the contrasts are evaluated"
+            "defaultValue": true,
+            "description": "Reverse the direction in which the contrasts are evaluated. True means Test vs Control (the condition starting with lower letter in the alphabet is used as control)."
         }
  
     ]
