@@ -82,7 +82,7 @@ doLimmaStraight = function(df){
   result = contr.df %>% 
     group_by(contrast) %>% 
     do({
-      tt = topTable(fresult, coef = .$contrast, number = dim(X)[1], adjust.method = "BH")
+      tt = topTable(fresult, coef = .$contrast, number = dim(X)[1])
       tt %>% 
         mutate(.ri = rownames(tt))
     }) %>% 
@@ -123,7 +123,7 @@ doLimmaWithPairing = function(df){
   result = contr.df %>% 
     group_by(contrast) %>% 
     do({
-      tt = topTable(fresult, coef = .$contrast, number = dim(X)[1], adjust.method = "BH")
+      tt = topTable(fresult, coef = .$contrast, number = dim(X)[1])
       tt %>% 
         mutate(.ri = rownames(tt))
     }) %>% 
@@ -136,13 +136,14 @@ result = ctx %>%
   group_by(.ci) %>% 
   do(limmaFun(.))%>% 
   ungroup() %>% 
-  select(.ci, .ri, contrast, logFC, AveExpr, t, pvalue = P.Value, FDR = adj.P.Val) %>% 
+  select(.ci, .ri, contrast, logFC, AveExpr, t, pvalue = P.Value) %>% 
   mutate(logp= -log10(pvalue)) %>% 
   group_by(contrast) %>% 
   mutate(rankp = rank(pvalue)) %>% 
   ungroup() %>% 
-  mutate(.ri = as.integer(.ri)) %>%
-  mutate(contrast = sub("-", " vs ", .$contrast))
+  mutate(FDR = p.adjust(.$pvalue),
+         .ri = as.integer(.ri),
+         contrast = sub("-", " vs ", .$contrast))
 
 if(max(result$.ci) >0) {
   result = result %>%  
@@ -150,7 +151,6 @@ if(max(result$.ci) >0) {
 }
 
 result %>%
-  select(-.ci) %>% 
   ungroup() %>% 
   ctx$addNamespace() %>% 
   ctx$save()
