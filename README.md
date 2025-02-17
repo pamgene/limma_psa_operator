@@ -47,6 +47,9 @@ LIMMA, instead of analyzing each peptide in isolation, uses information from all
 
 Applying LIMMA leads to results with increased statistical power (i.e. the ability to detect real differences) over individual testing per peptide (with for example t-tests). Therefore, LIMMA can detect smaller differences that might otherwise be missed. This makes the analysis more robust, especially when only limited data is available.
 
+##### Reference
+
+Ritchie ME, Phipson B, Wu D, Hu Y, Law CW, Shi W, Smyth GK (2015). “limma powers differential expression analyses for RNA-sequencing and microarray studies.” Nucleic Acids Research, 43(7), e47. doi:10.1093/nar/gkv007.
 
 
 
